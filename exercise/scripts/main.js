@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       // If we have selected two cards, see if they match.
-      else if (selectedCards.length === 2) {
+      if (selectedCards.length === 2) {
         var card1 = selectedCards[0];
         var card2 = selectedCards[1];
 
@@ -33,14 +33,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
         // Regardless of whether or not the cards match, deselect them and reset
         // the collection of matched cards.
-        card1.classList.remove('is-selected');
-        card2.classList.remove('is-selected');
-        selectedCards = [];
+        setTimeout(function(){
+          card1.classList.remove('is-selected');
+          card2.classList.remove('is-selected');
+          selectedCards = [];
+        }, 500);
+
       }
 
       // If we've matched all the cards, display a message.
-      if (matchedCards.length > cards.length) {
+      if (matchedCards.length == cards.length) {
+        setTimeout(function(){
         alert('You matched all the cards, nice job!');
+        }, 500);
       }
     });
   });
